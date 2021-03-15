@@ -1,10 +1,13 @@
 {% extends 'service/base.html' %}
 
+{% block title %}Login{% endblock %}
+
 {% block content %}
-<h2>User login!</h2>
-<form method="post">
+<h2>Log In</h2>
+<form method="post" class="post-form" action="{% url 'login:login_auth' %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Log In</button>
+  <button type="submit" href="{% url 'login:login_auth' %}">Log In</button>
+  <a href="{% url 'login:login_auth' %}">LOGIN</a>
 </form>
 {% endblock %}
