@@ -15,3 +15,6 @@ class RegisterView(generic.CreateView):
 class LoginView(generic.CreateView):
 	model = Login
 	template_name = 'login/user_login.html'
+	fields = ('name', 'password')
+
+	def loginPage(request):
