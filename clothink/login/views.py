@@ -20,12 +20,6 @@ class LoginView(generic.CreateView):
 	success_url = reverse_lazy('service:home')
 	fields = ("name", "password")
 
-class LogoutView(generic.CreateView):
-	model = Login
-	template_name = 'login/user_login.html'
-	success_url = reverse_lazy('service:home')
-	fields = ("name", "password")
-
 def logout_view(request):
     logout(request)
     #messages.info(request, "You have successfully logged out.")
