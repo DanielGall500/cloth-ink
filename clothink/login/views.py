@@ -21,6 +21,15 @@ class LoginView(generic.CreateView):
 	fields = ("name", "password")
 
 
+class LogoutView(generic.CreateView):
+	model = Login
+	template_name = 'login/user_login.html'
+	success_url = reverse_lazy('service:home')
+	fields = ("name", "password")
+
+def logout(request):
+	logout()
+
 def login_auth(request):
 	name = request.POST.get('name')
 	password = request.POST.get('password')

@@ -132,4 +132,4 @@ os.path.join(BASE_DIR, 'boot'),
 ]
 
 LOGIN_REDIRECT_URL = 'login/login_auth'
-LOGOUT_REDIRECT_URL = '/' # new
+#LOGOUT_REDIRECT_URL = 'service:home'
