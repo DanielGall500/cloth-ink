@@ -4,10 +4,10 @@
 
 {% block content %}
 <h2>Log In</h2>
-<form method="post" class="post-form" action="{% url 'login:login_auth' %}">
+<form method="post" class="post-form" action="{%  url 'login:login_auth' %}">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" href="{% url 'login:login_auth' %}">Log In</button>
-  <a href="{% url 'login:login_auth' %}">LOGIN</a>
+    <a href="{% url 'login:login_auth' %}">LOGIN</a>
 </form>
 {% endblock %}
