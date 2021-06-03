@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.views import generic
@@ -22,7 +23,7 @@ class LoginView(generic.CreateView):
 
 def logout_view(request):
     logout(request)
-    #messages.info(request, "You have successfully logged out.")
+    messages.info(request, "You have successfully logged out.")
     return redirect("service:home")
 
 def login_auth(request):
