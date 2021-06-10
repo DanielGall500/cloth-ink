@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm, authenticate
 
 
 class RegisterView(generic.CreateView):
+
 	model = Registration
 	form_class = UserCreationForm
 	template_name = 'login/registration.html'
@@ -16,17 +17,22 @@ class RegisterView(generic.CreateView):
 
 
 class LoginView(generic.CreateView):
+
 	model = Login
 	template_name = 'login/user_login.html'
 	success_url = reverse_lazy('service:home')
 	fields = ("name", "password")
 
+
 def logout_view(request):
+
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("service:home")
 
+
 def login_auth(request):
+
 	name = request.POST.get('name')
 	password = request.POST.get('password')
 	user = authenticate(request, username=name, password=password)
