@@ -20,7 +20,7 @@ def profile_auth(request):
     password = request.POST.get('password')
     user = authenticate(request, username=name, password=password)
     if user is not None:
-        #login(request, user)
+        login(request, user)
         return redirect('userprofile:user_home')
     else:
         return redirect('login:user_login')
