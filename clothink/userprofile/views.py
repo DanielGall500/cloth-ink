@@ -16,11 +16,7 @@ class ProfileView(generic.CreateView):
 
 
 def profile_auth(request):
-    name = request.POST.get('name')
-    password = request.POST.get('password')
-    user = authenticate(request, username=name, password=password)
-    if user is not None:
-        #login(request, user)
+    if(request.user.is_authenticated):
         return redirect('userprofile:user_home')
     else:
         return redirect('login:user_login')
