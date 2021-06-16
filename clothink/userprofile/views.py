@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views import generic
-from login.models import Login
+from userprofile.models import User
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 #@login_required(login_url='service:home')
 class ProfileView(generic.CreateView):
     template_name = 'userprofile/user_profile.html'
-    model = Login
+    model = User
     success_url = reverse_lazy('service:home')
     fields = ("name", "password")
 
