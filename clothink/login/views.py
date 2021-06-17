@@ -3,29 +3,27 @@ from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse, reverse_lazy
-from login.models import Login, Registration
 from django.contrib.auth import logout, login
 from django.contrib.auth.forms import UserCreationForm, authenticate
+from userprofile.models import User
+from userprofile.admin import UserCreationForm, UserLoginForm
 
 
 class RegisterView(generic.CreateView):
-
-    model = Registration
+    model = User
     form_class = UserCreationForm
     template_name = 'login/registration.html'
     success_url = reverse_lazy('service:home')
 
 
 class LoginView(generic.CreateView):
-
-    model = Login
+    model = User
+    form_class = UserLoginForm
     template_name = 'login/user_login.html'
     success_url = reverse_lazy('service:home')
-    fields = ("name", "password")
 
 
 def logout_view(request):
-
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("service:home")
@@ -33,11 +31,16 @@ def logout_view(request):
 
 def login_auth(request):
 
-    name = request.POST.get('name')
-    password = request.POST.get('password')
-    user = authenticate(request, username=name, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect('service:home')
+    if request.method == 'POST':
+        email = request.POST.get('email', '')
+        password = request.POST.get('password', '')
+
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('service:home')
+        else:
+            return redirect('login:user_registration')
     else:
         return redirect('login:user_registration')
