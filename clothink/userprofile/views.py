@@ -4,10 +4,12 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from login.models import Login
 from django.urls import reverse_lazy
+from django.http import HttpResponse
+from .forms import *
 
 # Create your views here.
 
-#@login_required(login_url='service:home')
+
 class ProfileView(generic.CreateView):
     template_name = 'userprofile/user_profile.html'
     model = Login
@@ -17,7 +19,24 @@ class ProfileView(generic.CreateView):
 
 def profile_auth(request):
 
-    if(request.user.is_authenticated):
+    if request.user.is_authenticated:
         return redirect('userprofile:user_home')
     else:
         return redirect('login:user_login')
+
+
+def user_image_view(request):
+
+    if request.method == 'POST':
+        form = UserImageForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = UserImageForm()
+    return render(request, 'user_profile.html', {'form' : form})
+
+
+def success(request):
+    return HttpResponse('successfully uploaded')

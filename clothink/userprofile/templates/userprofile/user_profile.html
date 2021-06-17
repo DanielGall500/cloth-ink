@@ -4,4 +4,12 @@
 <h1>User Profile</h1>
     <h2>GEDONIT</h2>
 <p> Hi {{ user.username }}! </p>
+	<meta charset="UTF-8">
+	<title>Hotel_image</title>
+	<form method = "post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Upload</button>
+	</form>
+
 {% endblock content %}
