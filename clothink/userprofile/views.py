@@ -5,7 +5,7 @@ from django.views import generic
 from userprofile.models import User
 from django.urls import reverse_lazy
 from django.http import HttpResponse
-#from .forms import *
+from .forms import UserImageForm
 
 # Create your views here.
 
@@ -13,8 +13,8 @@ from django.http import HttpResponse
 class ProfileView(generic.CreateView):
     template_name = 'userprofile/user_profile.html'
     model = User
-    success_url = reverse_lazy('service:home')
-    fields = ("email", "password")
+    success_url = reverse_lazy('userprofile:success')
+    fields = ("profile_image",)
 
 
 def profile_auth(request):
@@ -35,7 +35,8 @@ def user_image_view(request):
             return redirect('success')
     else:
         form = UserImageForm()
-    return render(request, 'user_profile.html', {'form' : form})
+
+    return render(request, 'userprofile/user_profile.html', {'form': form})
 
 
 def success(request):

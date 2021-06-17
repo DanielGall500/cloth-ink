@@ -1,12 +1,11 @@
 # forms.py
-"""
+
 from django import forms
-from .models import *
+from .models import User
 
 
 class UserImageForm(forms.ModelForm):
 
-	class Meta:
-		model = User
-		fields = ['email', 'profile_image']
-		"""
+    class Meta:
+        model = User
+        fields = ['profile_image']
