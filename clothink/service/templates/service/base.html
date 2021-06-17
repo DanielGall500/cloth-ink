@@ -74,7 +74,7 @@
                             role="button" href="{% url 'login:user_registration' %}">Register</a>
                         </li>
                         <li class="nav-item">
-                            <button type="submit" onclick="location.href='{% url 'userprofile:profile_auth' %}'">My Profile</button>
+                            <button method="post" type="submit" onclick="location.href='{% url 'userprofile:profile_auth' %}'">My Profile</button>
                             <!--<form method="post" class="btn btn-outline-secondary btn-lg font-weight-bold text-black post-form" href="%  url 'userprofile:profile_auth' %}">
                                 My Profile
                             </form>-->

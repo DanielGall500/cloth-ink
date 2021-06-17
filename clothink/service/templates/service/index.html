@@ -9,7 +9,7 @@
 </div>
 
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+  Hi {{ user.email }}!
   <p><a href="{% url 'login:logout' %}">Log Out</a></p>
 {% else %}
   <p>You are not logged in</p>
