@@ -5,7 +5,7 @@ from django.views import generic
 from userprofile.models import User
 from django.urls import reverse_lazy
 from django.http import HttpResponse
-from .forms import *
+#from .forms import *
 
 # Create your views here.
 
@@ -14,7 +14,7 @@ class ProfileView(generic.CreateView):
     template_name = 'userprofile/user_profile.html'
     model = User
     success_url = reverse_lazy('service:home')
-    fields = ("name", "password")
+    fields = ("email", "password")
 
 
 def profile_auth(request):
