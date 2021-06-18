@@ -2,14 +2,11 @@
 
 {% block content %}
 <h1>User Profile</h1>
-    <h2>GEDONIT</h2>
 <p> Hi {{ user.email }}! </p>
-	<meta charset="UTF-8">
-	<title>Hotel_image</title>
-	<form method = "post" enctype="multipart/form-data">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit">Upload</button>
-	</form>
+    <p> Welcome to your profile page :) </p>
+    <li class="nav-item">
+        <a class="btn btn-outline-secondary btn-lg font-weight-bold text-black"
+           role="button" href="{% url 'userprofile:image_upload' %}">Upload Profile Picture</a>
+    </li>
 
 {% endblock content %}

@@ -41,6 +41,7 @@ def login_auth(request):
             login(request, user)
             return redirect('service:home')
         else:
-            return redirect('login:user_registration')
+            messages.info(request, "Incorrect email and/or password")
+            return redirect('login:user_login')
     else:
-        return redirect('login:user_registration')
+        return redirect('service:home')

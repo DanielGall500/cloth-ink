@@ -1,0 +1,12 @@
+{% extends 'service/base.html' %}
+
+{% block content %}
+    <h1>Upload Profile Picture</h1>
+<meta charset="UTF-8">
+	<form method = "post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Upload PP</button>
+	</form>
+
+{% endblock content %}

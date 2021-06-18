@@ -1,5 +1,4 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views import generic
 from userprofile.models import User
@@ -13,7 +12,7 @@ from .forms import UserImageForm
 class ProfileView(generic.CreateView):
     template_name = 'userprofile/user_profile.html'
     model = User
-    success_url = reverse_lazy('userprofile:success')
+    success_url = reverse_lazy('service:home')
     fields = ("profile_image",)
 
 
@@ -32,11 +31,11 @@ def user_image_view(request):
 
         if form.is_valid():
             form.save()
-            return redirect('success')
+            return redirect('userprofile:success')
     else:
         form = UserImageForm()
 
-    return render(request, 'userprofile/user_profile.html', {'form': form})
+    return render(request, 'userprofile/profile_pic_upload.html', {'form': form})
 
 
 def success(request):
