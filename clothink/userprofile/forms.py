@@ -8,4 +8,4 @@ class UserImageForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['profile_image']
+        fields = ['profile_image', ]

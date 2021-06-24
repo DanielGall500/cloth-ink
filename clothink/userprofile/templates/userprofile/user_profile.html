@@ -3,10 +3,21 @@
 {% block content %}
 <h1>User Profile</h1>
 <p> Hi {{ user.email }}! </p>
+    <p>First Name: {{ user.first_name}}</p>
     <p> Welcome to your profile page :) </p>
+
+    {% if user.profile_image %}
+        <p>Image URL: {{ user.profile_image.url}}</p>
+        <img src="{{ user.profile_image.url }}" width="240">
+    {% endif %}
+
     <li class="nav-item">
         <a class="btn btn-outline-secondary btn-lg font-weight-bold text-black"
            role="button" href="{% url 'userprofile:image_upload' %}">Upload Profile Picture</a>
+    </li>
+    <li class="nav-item">
+        <a class="btn btn-outline-secondary btn-lg font-weight-bold text-black"
+           role="button" href="{% url 'userprofile:profile_pic' %}">View PP</a>
     </li>
 
 {% endblock content %}

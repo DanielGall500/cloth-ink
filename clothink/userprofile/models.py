@@ -41,6 +41,7 @@ class UserManager(BaseUserManager):
 		user.save(using=self._db)
 		return user
 
+
 class User(AbstractBaseUser):
 
 	objects = UserManager()
@@ -59,7 +60,7 @@ class User(AbstractBaseUser):
 	first_name = models.CharField(max_length=255)
 	last_name = models.CharField(max_length=255)
 
-	profile_image = models.ImageField(upload_to='images/')
+	profile_image = models.ImageField(upload_to='images/', blank=True, null=True, default=None)
 
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = []

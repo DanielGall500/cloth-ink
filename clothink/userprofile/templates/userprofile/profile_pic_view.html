@@ -1,0 +1,14 @@
+{% extends 'service/base.html' %}
+
+{% block content %}
+<h1>View PP</h1>
+    <!--% for user in profile_pics %}-->
+             {{ user.email }}
+    {% if user.profile_image %}
+
+        <img src="{{ user.profile_image.url }}" width="240">
+
+    {% endif %}
+    <!--% endfor %>
+
+{% endblock content %}
